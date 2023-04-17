@@ -17,10 +17,10 @@ This project is a Django web application for visualising EEG data. It uses the M
 
 1. Install [Anaconda](https://www.anaconda.com/products/distribution) if you haven't already.
 2. Clone this repository:
-
+```bash
 git clone https://github.com/mihaela-peneva/BrainStormer.git
-cd eeg-data-visualization
-
+cd BrainStormer
+```
 
 3. Create a new Anaconda environment and activate it:
 ```bash
