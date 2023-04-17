@@ -4,7 +4,7 @@ This project is a Django web application for visualising EEG data. It uses the M
 
 ## Requirements
 
-- Python 3.x
+- Python 3.11
 - Django
 - MNE
 - pandas
@@ -18,32 +18,38 @@ This project is a Django web application for visualising EEG data. It uses the M
 1. Install [Anaconda](https://www.anaconda.com/products/distribution) if you haven't already.
 2. Clone this repository:
 
-git clone https://github.com/yourusername/eeg-data-visualization.git
+git clone https://github.com/mihaela-peneva/BrainStormer.git
 cd eeg-data-visualization
 
 
 3. Create a new Anaconda environment and activate it:
-
-conda create -n eeg-data-visualization python=3.x
-conda activate eeg-data-visualization
-
+```bash
+  conda create -n eeg-analysis python=3.11
+  conda activate eeg-analysis
+```
 
 4. Install the required packages:
-
+```bash
 conda install django pandas numpy matplotlib plotly
 conda install -c conda-forge mne
-
+```
 
 5. Run the Django development server:
-
+```bash
+cd BrainStormer
 python manage.py runserver
-
+```
+or
+```bash
+cd BrainStormer
+python3 manage.py runserver
+```
 
 6. Access the web application by navigating to `http://localhost:8000/` in your web browser.
 
 ## Usage
 
-Upload your EEG data in CSV format to the web application. The data should include timestamps and EEG channel measurements. The application will process the data using the MNE library, perform necessary calculations, and visualize the results using Plotly.
+Upload your EEG data in CSV format to the web application. The data should include timestamps and EEG channel measurements. The application will process the data using the MNE library, perform necessary calculations, and visualise the results using Plotly.
 
 ## Dependencies
 
