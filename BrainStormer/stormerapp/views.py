@@ -22,6 +22,12 @@ def generatorPage(request):
         # make error message
         if not isFileCsv(file):
             return render(request, 'generator.html')
+
+        # column_type must be passed from the document
+        column_names = file.columns
+        if not all(column in column_names for column in column_type):
+            print("Error: One or more of the specified columns are not present in the CSV file.")
+            return
         # reader = csv.DictReader(file)
         # for row in reader:
         #     pass
