@@ -24,6 +24,8 @@
           image.src = "{% static 'images/output_filter2.png' %}";
         } else if (buttonId == 3) {
           image.src = "{% static 'images/output_filter3.png' %}";
+        } else if (buttonId == 4) {
+          image.src = "{% static 'images/output_ica.png' %}";
         } else {
           image.src = "{% static 'images/output.png' %}";
         }
@@ -54,93 +56,74 @@
     <div class="container-fluid">
       <div class="row">
         <nav class="col-md-2 d-none d-md-block bg-white sidebar">
-          <div class="sidebar-sticky">
-            <ul class="nav flex-column custom-nav">
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'home' %}">
-                  Sample Data
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  Generator
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  Project Description
-                </a>
-              </li>
-            </ul>
+          <div class="nav-bar-custom">
+            <div class="sidebar-sticky">
+              <ul class="nav flex-column custom-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'home' %}">
+                    Sample Visualisations
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'generator' %}">
+                    Generator
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'description' %}">
+                    Project Description
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
         </nav>
+        
       <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-        <div id="particles-js">
-        <div class="main-box2">
-          <h1>Generated Figure</h1>
-          <div class="container2">
-            <div class="buttons">
-              <button class="filter-button">Denoise</button>
-              <button class="filter-button">Reset</button>
-            </div>
-            <div class="image-container2">
-              <img src="{% static 'images/output.png' %}" id="generatedFigure">
-          
-            </div>
-            <div class="buttons">
-              <button class="filter-button">3D Visualisation</button>
-              <button class="filter-button">Random</button>
-            </div>
-              
-          </div>
-          <div class="filter-container">
-            <span class="filter-label">Filter data:</span>
-            <button onclick="changeImage(1)" class="filter-button">1000 samples</button>
-            <button onclick="changeImage(2)" class="filter-button">5000 samples</button>
-            <button onclick="changeImage(3)" class="filter-button">10,000 samples</button>
-            <form method="POST" enctype="multipart/form-data">
-              {% csrf_token %}
-                <input type="text" class="custom-range-input" placeholder="Custom range (samples)" id="customRange">
-                <button onclick="sendData('{{csvFile}}',  document.getElementById('customRange').innerHTML)" class="custom-range-button" >Go</button>
+        
+          <div class="main-box">
+            <div id="particles-js"></div>
+            <h1>Generated Visualisation</h1>
+            <div class="container2">
+              <div class="buttons">
+                
+                <button class="filter-button">3D</button>
+                <button onclick="changeImage(Math.floor((Math.random() * 4) + 1))"class="filter-button">Random</button>
               </div>
-            </form>
-            
+              <div class="image-container2">
+                <img src="{% static 'images/output.png' %}" id="generatedFigure">
+              </div>
+              <div class="buttons">
+                <button onclick="changeImage(4)" class="filter-button">Separate</button>
+                <button onclick="changeImage(-1)" class="filter-button">Reset</button>
+              </div>
+            </div>
+            <div class="filter-container-parent">
+              <div class="filter-container">
+                <span class="filter-label">Filter data:</span>
+                <button onclick="changeImage(1)" class="filter-button">200 samples</button>
+                <button onclick="changeImage(2)" class="filter-button">500 samples</button>
+                <button onclick="changeImage(3)" class="filter-button">1000 samples</button>
+                <form method="POST" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <input type="text" class="custom-range-input" placeholder="Custom range (samples)" id="customRange">
+                  <!-- Pass the file again with the parameters -->
+                  <button type="submit" class="custom-range-button" >Go</button>
+                </form>
+              </div>
             </div>
           </div>
-          </div>
-        </main>
-      </div>
+        </div>
+      </main>
     </div>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
     {% load static %}
     <script src="{% static 'particles.js' %}"></script> <!-- Load particles.js library -->
-    <script>
-      const canvas = document.getElementById('gradient-background');
-      const ctx = canvas.getContext('2d');
-    
-      function resizeCanvas() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-      }
-    
-      function updateGradient() {
-        const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-        gradient.addColorStop(0, 'rgba(255, 0, 0, 0.5)');
-        gradient.addColorStop(0.5, 'rgba(0, 255, 0, 0.5)');
-        gradient.addColorStop(1, 'rgba(0, 0, 255, 0.5)');
-        ctx.fillStyle = gradient;
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        requestAnimationFrame(updateGradient);
-      }
-    
-      resizeCanvas();
-      updateGradient();
-      window.addEventListener('resize', resizeCanvas);
-    </script>
-    
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
   </body>
 </html>

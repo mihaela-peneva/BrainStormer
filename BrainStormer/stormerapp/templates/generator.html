@@ -1,4 +1,4 @@
-<!-- HTML code is adapted from Bootstrap documentation: https://getbootstrap.com/docs/5.0/components/navs/" -->
+<!-- HTML code is influenced by Bootstrap documentation: https://getbootstrap.com/docs/5.0/components/navs/" -->
 {% load static %}
 <!doctype html>
 <html lang="en">
@@ -22,24 +22,26 @@
     <div class="container-fluid">
       <div class="row">
         <nav class="col-md-2 d-none d-md-block bg-white sidebar">
+          <div class="nav-bar-custom">
           <div class="sidebar-sticky">
             <ul class="nav flex-column custom-nav">
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'home' %}">
-                  Sample Data
+                  Sample Visualisations
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{% url 'generator' %}">
                   Generator
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{% url 'description' %}">
                   Project Description
                 </a>
               </li>
             </ul>
+          </div>
           </div>
         </nav>
         
@@ -53,9 +55,72 @@
             <form method="POST" enctype="multipart/form-data">
               {% csrf_token %}
               <div class="upload-container mb-3">
-                <input type="file" id="customFile" name="customFile">
-                <button type="submit" class="btn btn-upload">Upload</button>
+                <div class="input-custom"><input type="file" id="customFile" name="customFile"></div>
+                
+                <div class="form-group">
+                  <label for="channels">Select Channels:</label>
+                  <select class="form-control" id="channels" name="channels" multiple>
+                      <option value="eeg_1">EEG 1</option>
+                      <option value="eeg_2">EEG 2</option>
+                      <option value="eeg_3">EEG 3</option>
+                      <option value="eeg_4">EEG 4</option>
+                      <option value="eeg_5">EEG 5</option>
+                      <option value="eeg_6">EEG 6</option>
+                      <option value="acc_1">ACC 1</option>
+                      <option value="gyro_1">GYRO 1</option>
+                      <option value="gyro_2">GYRO 2</option>
+                      <option value="gyro_3">GYRO 3</option>
+                      <option value="dlref_1">DRLEF 1</option>
+                      <option value="dlref_2">DRLEF 2</option>
+                      <option value="delta_absolute_1">DELTA ABSOLUTE 1</option>
+                      <option value="delta_absolute_2">DELTA ABSOLUTE 2</option>
+                      <option value="delta_absolute_3">DELTA ABSOLUTE 3</option>
+                      <option value="delta_absolute_4">DELTA ABSOLUTE 4</option>
+                      <option value="theta_absolute_4">THETA ABSOLUTE 1</option>
+                      <option value="theta_absolute_4">THETA ABSOLUTE 2</option>
+                      <option value="theta_absolute_4">THETA ABSOLUTE 3</option>
+                      <option value="theta_absolute_4">THETA ABSOLUTE 4</option>
+                      <option value="alpha_absolute_1">ALPHA ABSOLUTE 1</option>
+                      <option value="alpha_absolute_2">ALPHA ABSOLUTE 2</option>
+                      <option value="alpha_absolute_3">ALPHA ABSOLUTE 3</option>
+                      <option value="alpha_absolute_4">ALPHA ABSOLUTE 4</option>
+                      <option value="dlref_2">DRLEF 2</option>
+                      <option value="dlref_2">DRLEF 2</option>
+                      <option value="dlref_2">DRLEF 2</option>
+                      <option value="dlref_2">DRLEF 2</option>
+                      <option value="dlref_2">DRLEF 2</option>
+                      <option value="dlref_2">DRLEF 2</option>
+                      <option value="dlref_2">DRLEF 2</option>
+                      <option value="dlref_2">DRLEF 2</option>
+                      <option value="dlref_2">DRLEF 2</option>
+                      <option value="dlref_2">DRLEF 2</option>
+                      <option value="dlref_2">DRLEF 2</option>
+                      <option value="dlref_2">DRLEF 2</option>
+                      <option value="dlref_2">DRLEF 2</option>
+                      <option value="dlref_2">DRLEF 2</option>
+                      <option value="dlref_2">DRLEF 2</option>
+                      <option value="dlref_2">DRLEF 2</option>
+                      <option value="dlref_2">DRLEF 2</option>
+                      <option value="dlref_2">DRLEF 2</option>
+                      <option value="dlref_2">DRLEF 2</option>
+                      <option value="dlref_2">DRLEF 2</option>
+                      <option value="dlref_2">DRLEF 2</option>
+                      <option value="dlref_2">DRLEF 2</option>
+                      <option value="dlref_2">DRLEF 2</option>
+                      <option value="dlref_2">DRLEF 2</option>
+                      <option value="dlref_2">DRLEF 2</option>
+                      <option value="dlref_2">DRLEF 2</option>
+                      <option value="dlref_2">DRLEF 2</option>
+                      <option value="dlref_2">DRLEF 2</option>
+                      <option value="dlref_2">DRLEF 2</option>
+                      <option value="dlref_2">DRLEF 2</option>
+                      <option value="dlref_2">DRLEF 2</option>
+                      <!-- Add more options for other channels -->
+                  </select>
               </div>
+              <button type="submit" class="btn btn-upload">Upload</button>
+              </div>
+              
             </form>
           </div>
         </div>

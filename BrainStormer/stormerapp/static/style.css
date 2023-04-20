@@ -1,25 +1,31 @@
 /* "CSS is adapted from W3Schools tutorial: https://www.w3schools.com/css/css_navbar.asp" */
+/* Header is taken from open-source code: https://codepen.io/TajShireen/pen/ExLWgGb */
 
 * {
   box-sizing: border-box;
 }
 :root {
-  --background-color: black;
+  --background-color: #1a1a4e;
   --text-color: hsl(0, 0%, 100%);
 }
-body {
-  margin: 0;
 
+
+.nav-bar-custom {
+  padding: 2px;
+  margin-top: 15px;
 }
+  
 .wrapper {
   display: grid;
-  place-content: center;
+  padding-left: 10px;
+  place-content: start;
   background-color: var(--background-color);
-  min-height: 10vh;
+  min-height: 5vh;
   font-family: "Oswald", sans-serif;
-  font-size: clamp(1.5rem, 1rem + 18vw, 5rem);
-  font-weight: 700;
-  text-transform: uppercase;
+  font-size: clamp(1.2rem, 1rem + 18vw, 2.5rem);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
   color: var(--text-color);
 }
 
@@ -39,31 +45,41 @@ body {
   transform: translateX(-0.02em);
 }
 
-.main {
-  height: 100%;
-}
 
 .main-box {
+  position: relative;
   background-color: #f2f2f2;
+  margin-top: 10px;
   padding: 20px;
   border-radius: 5px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  height: 50rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+  height: auto;
+  width: 100%;
+  min-height: 85vh;
+  z-index: 1;
   
 }
 
-.main-box2 {
-  background-color: #f2f2f2;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+
+.form-group {
+  background-color: #f1f1f1;
+  width: 100%; /* Change the width to make it narrower */
+  padding: 5px;
+  margin: 0 auto; /* Add margin for centering */
   align-items: center;
+  justify-content: center;
   text-align: center;
-  height: 100%;
+}
+
+.form-group select {
+  width: 100%;
+  padding: 5px;
+  border: none;
+  background-color: white;
+  appearance: none; /* Remove the default appearance of the select element */
 }
 
 
-/* Style the menu items */
 .custom-nav .nav-item a.nav-link {
   color: #212529;
   font-weight: 500;
@@ -71,31 +87,41 @@ body {
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
 }
 
-/* Add a greenish background to the menu items on hover */
+
 .custom-nav .nav-item a.nav-link:hover {
-  background-color: #c1e2b3;
-  color: #212529;
+  background-color: #1a1a4e;
+  color: white;
   text-decoration: none;
 }
 
-.image-container {
+.img-container {
   display: flex;
   flex-wrap: wrap;
   max-width: 100%;
   overflow: hidden;
+  align-items: center;
+  z-index: 1;
 }
 
-.image-container img {
-  width: 40%;
+.img-container img {
+  width: 48%;
   padding: 5px;
   height: auto;
   margin: 10px;
   box-sizing: border-box;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  z-index: 1;
 }
 
+
 .main-box h1{
+  margin-top: 20px;
   text-align: center;
+  padding: 0px 0px 20px 0px;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 300;
+  font-size: 4em;
+  z-index: 1;
 }
 
 .upload-container {
@@ -108,6 +134,17 @@ body {
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
   text-align: center;
   position: relative;
+  z-index: 1;
+}
+
+.input-custom {
+  width: 100;
+  z-index: 1;
+}
+.upload-container input[type="file"] {
+  justify-content: right;
+  width: 50%;
+  margin-bottom: 10px;
   z-index: 1;
 }
 .upload-container h2 {
@@ -123,28 +160,36 @@ body {
   border: none;
 }
 .custom-file-input:focus ~ .custom-file-label::after {
-  border-color: #007bff;
+  border-color: #c1e2b3;
 }
 .btn-upload {
-  background-color: #007bff;
-  color: #fff;
+  background-color: #1a1a4e;
+  color: white;
   border: none;
   padding: 8px 16px;
-  font-size: 18px;
+  margin-top: 20px;
+  font-size: 20px;
   border-radius: 5px;
+  width: 98%;
   transition: background-color 0.2s ease-in-out;
 }
 .btn-upload:hover {
-  background-color: #0069d9;
+  background-color: #c1e2b3;
 }
-
-
 
 
 .filter-container {
   align-items: center;
+  justify-content: center;
   margin-bottom: 1rem;
   margin-top: 1rem;
+  z-index: 1;
+}
+
+.filter-container-parent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .filter-label {
@@ -155,7 +200,7 @@ body {
   background-color: #fff;
   color: #333;
   border: 1px solid #333;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem;
   border-radius: 0.25rem;
   margin-right: 0.5rem;
   cursor: pointer;
@@ -165,25 +210,30 @@ body {
 .filter-button:hover {
   background-color: #333;
   color: #fff;
+
 }
 
 .custom-range-input {
+  margin-top: 1rem;
   border: 1px solid #333;
   border-radius: 0.25rem;
-  padding: 0.25rem 0.5rem;
+  padding: 0.5rem 0.5rem;
   margin-right: 0.5rem;
-  width: 16rem;
+  width: 22rem;
+  z-index: 1;
 }
 
 .custom-range-button {
   background-color: #fff;
   color: #333;
   border: 1px solid #333;
-  padding: 0.3rem 1rem;
+  padding: 0.5rem 1rem;
   border-radius: 0.25rem;
   margin: 0.3rem;
   cursor: pointer;
   transition: background-color 0.2s ease;
+  z-index: 1;
+  width: 5rem;
 }
 
 .custom-range-button:hover {
@@ -196,43 +246,43 @@ body {
   align-items: center;
   justify-content: center;
   height: auto;
+  z-index: 1;
 }
 
 .buttons {
+  margin: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-right: 1rem; /* adjust this value to add space between buttons and picture */
+  z-index: 1;
 }
 
 .buttons button {
-  margin-bottom: 1rem; /* adjust this value to add space between buttons */
+  margin-bottom: 1rem;
 }
 
 .image-container2  {
-  max-width: 100%;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
-  overflow: hidden;
-
-  height: auto;
-  margin: 10px;
-  
 }
 
 .image-container2  img{
-  
   width: 80%;
-  margin-left: 25px;
   height: auto;
-
   box-sizing: border-box;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  z-index: 1;
 }
 
+/* Open-source javascript interactive background */
 #particles-js {
   position: absolute;
+  max-width: fit-content;
   width: 100%;
+  min-width: 100%;
+  min-height: 100%;
   height: 100%;
   background-color: #0000;
   background-image: url("");
@@ -242,19 +292,11 @@ body {
   z-index: 0;
 }
 
-
-body, html {
-  height: 100%;
-  margin: 0;
+.container-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  z-index: 1;
 }
-
-#gradient-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-}
-
 

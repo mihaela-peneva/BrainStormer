@@ -88,7 +88,7 @@ def visualise_filtered(file_cmd, column_type):
 
 def plot(time, data, start=0, end=0):
     if start == 0 and end == 0:
-        plt.plot(time[:500], data[0:500])
+        plt.plot(time[:500], data[:500])
         plt.xlabel('Time(s)')
         plt.ylabel('Voltage')
         plt.show()
@@ -100,18 +100,15 @@ def plot(time, data, start=0, end=0):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("file", help="EEG file: muse2.csv)")
+    parser.add_argument("file", help="EEG file: muse2.csv")
     parser.add_argument("function", help="Function name: visualise_default, visualise_filtered)")
     parser.add_argument("parameters", nargs='*', help="Array of string parameters (e.g. ['eeg_1', 'eeg_2', 'eeg_3'])", default=None)
     args = parser.parse_args()
 
     if args.function == "visualise_default":
-        if args.parameters is not None:
-            print("visualise_default does not require parameters")
-        else:
-            visualise_default(args.file)
+        visualise_default(args.file)
     elif args.function == "visualise_filtered":
-        if args.parameters is None:
+        if args.parameters is None or args.parameters == []:
             print("visualise_filtered requires parameters")
         else:
             visualise_filtered(args.file, args.parameters)

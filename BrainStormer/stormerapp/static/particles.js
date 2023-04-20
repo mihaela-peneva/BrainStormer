@@ -2,7 +2,7 @@ particlesJS('particles-js',
   {
     "particles": {
       "number": {
-        "value": 180
+        "value": 280
       },
       "size": {
         "value": 3
